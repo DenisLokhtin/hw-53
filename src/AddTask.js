@@ -5,7 +5,7 @@ const AddTask = props => {
     return (
         <div className="card">
             <p className="text">{props.message}</p>
-            <p className="close">&#10006;</p>
+            <p onClick={props.remove} className="close">&#10006;</p>
         </div>
     )
 

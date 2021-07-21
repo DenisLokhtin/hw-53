@@ -11,13 +11,27 @@ const App = () => {
         {task: "buy cucumber", id: nanoid()},
     ]);
 
+    const [currentTask, setCurrentTask] = useState([
+        {currentTask: ""},
+    ]);
+
+    const removeTask = index => {
+        const TaskCopy = [...task];
+        TaskCopy.splice(index, 1);
+        setTask(TaskCopy);
+    };
+
+    const Add = () => {
+        setTask(currentTask);
+    };
+
     const printMessage = task.map((task) => {
-        return <AddTask message={task.task}/>
+        return <AddTask message={task.task} remove={() => removeTask(task.id)}/>
     })
 
   return (
       <div>
-          <AddTaskForm/>
+          <AddTaskForm Add={() => Add} set={() => setCurrentTask}/>
           {printMessage}
       </div>
   )

@@ -4,8 +4,8 @@ const AddTaskForm = props => {
 
     return (
         <form className="form">
-            <input className="input" type="text" placeholder="Add new task"/>
-            <input className="btn" type="button" value="Add"/>
+            <input value={props.setCurrentTask} className="input" type="text" placeholder="Add new task"/>
+            <input onClick={props.Add} className="btn" type="button" value="Add"/>
         </form>
     )
 
