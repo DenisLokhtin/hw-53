@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import {nanoid} from "nanoid";
+import AddTaskForm from "./AddTaskForm";
+import AddTask from './AddTask';
 import './App.css';
+import {useState} from "react";
 
-function App() {
+const App = () => {
+    const [task, setTask] = useState([
+        {task: "buy car", id: nanoid()},
+        {task: "buy milk", id: nanoid()},
+        {task: "buy cucumber", id: nanoid()},
+    ]);
+
+    const printMessage = task.map((task) => {
+        return <AddTask message={task.task}/>
+    })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <div>
+          <AddTaskForm/>
+          {printMessage}
+      </div>
+  )
+};
 
 export default App;
