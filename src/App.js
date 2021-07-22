@@ -12,7 +12,7 @@ const App = () => {
     ]);
 
     const [currentTask, setCurrentTask] = useState([
-        {currentTask: ""},
+        {currentTask: ''},
     ]);
 
     const removeTask = index => {
@@ -25,13 +25,13 @@ const App = () => {
         setTask(currentTask);
     };
 
-    const printMessage = task.map((task) => {
-        return <AddTask message={task.task} remove={() => removeTask(task.id)}/>
-    })
+    const printMessage = task.map((task, index) => {
+        return <AddTask key={task.id} message={task.task} remove={() => removeTask(index)}/>
+    });
 
   return (
       <div>
-          <AddTaskForm Add={() => Add} set={() => setCurrentTask}/>
+          <AddTaskForm Add={() => Add()} set={() => setCurrentTask}/>
           {printMessage}
       </div>
   )
