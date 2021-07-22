@@ -22,7 +22,12 @@ const App = () => {
     };
 
     const Add = () => {
-        setTask(currentTask);
+        if (currentTask.currentTask != '') {
+            const tasks = [...task];
+            tasks.push({task: currentTask.currentTask, id: nanoid()});
+            setTask(tasks);
+            setCurrentTask({currentTask: ''});
+        }
     };
 
     const printMessage = task.map((task, index) => {
@@ -31,7 +36,7 @@ const App = () => {
 
   return (
       <div>
-          <AddTaskForm Add={() => Add()} set={() => setCurrentTask}/>
+          <AddTaskForm Add={() => Add()} set={setCurrentTask}/>
           {printMessage}
       </div>
   )
